@@ -10,7 +10,7 @@ def main():
     if len(sys.argv) < 2:
         print("Usage: python run.py <source.mpl>")
         sys.exit(1)
-    src_path = Path(sys.argv[1])
+    src_path = Path("examples/" + sys.argv[1])
     code = src_path.read_text()
     parser = Parser(code)
     prog = parser.parse()
