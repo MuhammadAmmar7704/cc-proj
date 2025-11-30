@@ -64,3 +64,4 @@ Run:
 ```
 python -m mini_pattern_lang.run examples/sample1.mpl
 ```
+Demo Video: (https://drive.google.com/file/d/1GcE-aMOHyM_9jJ81TJHYhd-pfbGjhaPt/view?usp=drive_link)
