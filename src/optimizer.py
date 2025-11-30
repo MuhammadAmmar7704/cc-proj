@@ -19,7 +19,6 @@ class Optimizer:
         return out
 
     def dce(self, code: List[Instr]) -> List[Instr]:
-        # very naive: keep all prints, labels, jumps; drop assigns to temps never used
         used = set()
         for ins in code:
             for x in (ins.a, ins.b, ins.c):

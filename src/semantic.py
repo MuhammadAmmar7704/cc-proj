@@ -5,7 +5,7 @@ from . import ast as A
 @dataclass
 class Symbol:
     name: str
-    typ: str  # 'int' or 'seq'
+    typ: str
 
 class SemanticError(Exception):
     pass

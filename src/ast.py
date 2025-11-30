@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-# Expressions
 @dataclass
 class Expr:
     pass
@@ -25,7 +24,6 @@ class Binary(Expr):
     left: Expr
     right: Expr
 
-# Sequence expressions
 @dataclass
 class SeqFibonacci(Expr):
     n: Expr
@@ -35,7 +33,6 @@ class SeqRange(Expr):
     start: Expr
     end: Expr
 
-# Statements
 @dataclass
 class Stmt:
     pass

@@ -7,7 +7,6 @@ from src.ir import IRGen
 from src.optimizer import Optimizer
 from src.codegen import VM
 
-# Helper to capture stdout
 from io import StringIO
 import contextlib
 
@@ -24,28 +23,23 @@ def stdout_capture():
 def run_compiler(code):
     results = {}
     try:
-        # 1. Parsing
         parser = Parser(code)
         prog = parser.parse()
         results['ast'] = str(prog)
 
-        # 2. Semantic Analysis
         sem = Semantic()
         sem.check_program(prog)
-        results['semantic'] = "✅ Semantic Check Passed\nSymbol Table: " + str(sem.scopes)
+        results['semantic'] = "Semantic Check Passed\nSymbol Table: " + str(sem.scopes)
 
-        # 3. IR Generation
         ir_gen = IRGen()
         ir = ir_gen.gen_program(prog)
         results['ir'] = "\n".join([str(i) for i in ir])
 
-        # 4. Optimization
         opt = Optimizer()
         ir_opt = opt.fold_constants(ir)
         ir_opt = opt.dce(ir_opt)
         results['opt_ir'] = "\n".join([str(i) for i in ir_opt])
 
-        # 5. Execution
         vm = VM(ir_opt)
         with stdout_capture() as out:
             vm.run()
